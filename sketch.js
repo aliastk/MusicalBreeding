@@ -1,18 +1,17 @@
 var dropzone;
 
 function setup() {
-  createCanvas(200, 200);
+  var canvas = createCanvas(200, 200);
   background(0);
 
-  dropzone = select('#dropzone');
-  dropzone.drop(gotFile, unhighlight);
+  // dropzone = select('#dropzone');
+  canvas.drop(gotFile);
 }
 
 function gotFile(file) {
   createP(file.name + " " + file.size);
   var img = createImg(file.data);
-  img.size(100, 100);
-
+  image(img, 0, 0, width, height);
 }
 
 function highlight() {
