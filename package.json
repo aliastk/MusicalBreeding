@@ -1,0 +1,25 @@
+{
+  "name": "musical_breeding",
+  "version": "1.0.0",
+  "description": "A generator for music",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliastk/MusicalBreeding.git"
+  },
+  "keywords": [
+    "genetic",
+    "algorithim",
+    "generator",
+    "music"
+  ],
+  "author": "Toby Kwan and Janelynn Camingue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliastk/MusicalBreeding/issues"
+  },
+  "homepage": "https://github.com/aliastk/MusicalBreeding#readme"
+}
