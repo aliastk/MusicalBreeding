@@ -1,23 +1,28 @@
-var dropzone;
+import p5 from 'p5';
+import 'p5/lib/addons/p5.sound';
+import 'p5/lib/addons/p5.dom';
 
-function setup() {
-  var canvas = createCanvas(200, 200);
-  background(0);
+const sketch = (p5) => {
+  const width = p5.windowWidth;
+  const height = p5.windowHeight;
 
-  // dropzone = select('#dropzone');
-  canvas.drop(gotFile);
+  window.p5 = p5;
+
+  p5.setup = () => {
+    let canvas = p5.createCanvas(height, width);
+    canvas.parent('sketch');
+    p5.background(0);
+    // dropzone = select('#dropzone');
+    canvas.drop(gotFile);
+    p5.rect(230, 425, 150, 150);
+  }
+
+  function gotFile(file) {
+    p5.createP(file.name + " " + file.size);
+    let img = p5.createImg(file.data);
+    p5.rect(0, 0, 200, 200);
+    p5.image(img, 0, 0, 200, 200);
+  }
 }
 
-function gotFile(file) {
-  createP(file.name + " " + file.size);
-  var img = createImg(file.data);
-  image(img, 0, 0, width, height);
-}
-
-function highlight() {
-  dropzone.style('background-color', '#ccc');
-}
-
-function unhighlight() {
-  dropzone.style('background-color', '#fff');
-}
+export default sketch;
