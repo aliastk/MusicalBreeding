@@ -1,8 +1,20 @@
 <html>
   <head>
+    <script type="text/javascript" src="node_modules\midiconvert\src\MidiConvert.js"></script>
     <script src="bundle.js"></script>
+    <style>
+      #dropzone {
+        padding: 24px;
+        border-style: dashed;
+        font-size: 36pt;
+        width: 50%;
+      }
+ </style>
   </head>
   <body>
+    <p id ="dropzone">
+      Drag your file here.
+    </p>
     <div id="sketch"></div>
   </body>
 </html>
