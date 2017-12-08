@@ -27,6 +27,7 @@ const sketch = (p5) => {
       p5.frameRate(10);
       // dropzone = select('#dropzone');
       canvas.drop(gotFile);
+
       //p5.rect(230, 425, 150, 150);
     }
     //p5.draw = () => {
@@ -36,8 +37,23 @@ const sketch = (p5) => {
 
   //}
   var i = 0;
+  var red=255;
+  var green=0;
+  var blue=0;
+
+  p5.mousePressed = () => {
+    if ( (50<=p5.mouseX) && (p5.mouseX<=100) && (50<=p5.mouseY) && (p5.mouseY <=100) ){
+      red=0;
+      green=255;
+      blue=0;
+  }
+}
+
   p5.draw = () => {
+
     // Re add you button here
+    p5.fill(red, green, blue);
+    p5.rect(50, 50, 50, 50);
     if (loaded) {
       for (let x = 0; x < notes.length; x++) {
         //console.log(notes[x].name);
@@ -52,14 +68,14 @@ const sketch = (p5) => {
       if (i < notes.length) {
         console.log(notes[i].name);
         p5.rectMode(p5.CORNERS)
-          // notes[i].time is where the note start
+          // notes[trackNum].time is where the note start
           // notes[i].duration is how long the not plays for
           // notes[i].midi is the pitch
           //partsData.tracks[1].duration is how long the song is
-        p5.fill((notes[i].time / partsData.tracks[1].duration) * 255, 0, 0);
-        p5.rect((notes[i].time / partsData.tracks[1].duration) * width,
+        p5.fill((notes[i].time / partsData.tracks[tracksNum].duration) * 255, 0, 0);
+        p5.rect((notes[i].time / partsData.tracks[tracksNum].duration) * width,
           height - ((notes[i].midi / max1) * height), ((notes[i].duration +
-            notes[i].time) / partsData.tracks[1].duration) * width,
+            notes[i].time) / partsData.tracks[tracksNum].duration) * width,
           height - ((notes[i].midi / max1) * height) + 5);
         i++;
       } else {
@@ -97,7 +113,7 @@ const sketch = (p5) => {
           tracksNum = i;
           console.log("hi");
         }
-        notes = partsData.tracks[1].notes;
+        notes = partsData.tracks[tracksNum].notes;
       }
       reader.onloadend = function(e) {
         console.log(partsData);
